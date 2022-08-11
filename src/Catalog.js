@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import React from "react";
+import item from "./factories/item";
 
 const Catalog = (props) => {
     const {catalog} = props;
@@ -18,6 +19,9 @@ const Catalog = (props) => {
     return (
         <div id="catalog">
             Catalog!
+            {catalog.forEach(element => {
+                createDisplay(item);
+            })}
         </div>
     )
 }

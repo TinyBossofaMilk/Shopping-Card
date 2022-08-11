@@ -4,13 +4,16 @@ import Cart from "./Cart";
 import item from "./factories/item"
 
 function App() {
+  const {cart, setCart} = useState([]);//{item id + quantity}
+  const {catalog, setCatalog} = useState([
+    item("pants", 1, 115),
+    item("shirt", 22, 115),
+    item("shoes", 63, 846)
+  ]);
   // item=(name, id, price)
-  const {cart, setCart} = useState([]);
-  const {catalog, setCatalog} = useState([]); //{item id + quantity}
 
   const addItemtoCart = (item) => {
-
-    setCart(cart.concat(item))
+    setCart(cart.concat(item));
   };
 
   return (
