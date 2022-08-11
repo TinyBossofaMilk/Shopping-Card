@@ -12,7 +12,7 @@ const Cart = (props) => {
                 <div>
                     <div>{item.name}</div>
                     <div>Quantity: {item.qty}</div>
-                    <button onClick={removeItem}>Remove Item{item.qty}</button>
+                    {/* <button onClick={removeItem}>Remove Item{item.qty}</button> */}
                 </div>
             })}
         </div>

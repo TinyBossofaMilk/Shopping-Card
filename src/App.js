@@ -12,8 +12,8 @@ function App() {
     item("shoes", uniqid(), 846)
   ]);
 
-  const addToCart = (item) => {
-    setCart(cart.concat({item, qty:1}));
+  const addToCart = (e) => {
+    setCart(cart.concat({e, qty:1}));
   }; 
 
   // console.log(catalog)
@@ -24,8 +24,8 @@ function App() {
     <div className="App">
       Hello World!
       <nav></nav>
-      <Catalog catalog={catalog}></Catalog>
-      <Cart cart={cart} addToCart={addToCart}></Cart>
+      <Catalog catalog={catalog} addToCart={addToCart}></Catalog>
+      <Cart cart={cart} ></Cart>
     </div>
   );
 }

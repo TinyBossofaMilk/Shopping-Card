@@ -4,7 +4,6 @@ import item from "./factories/item";
 
 const Catalog = (props) => {
     const {catalog, addToCart} = props;
-    console.log(addToCart)
 
     function createDisplay(item)
     {
@@ -13,7 +12,7 @@ const Catalog = (props) => {
                 <img></img>
                 <div className="name">{item.name}</div>
                 <div className="price">${item.price}</div>
-                <button onClick={addToCart(item)}>Add to Cart</button>
+                <button onClick={(e) => {addToCart(e)}}>Add to Cart</button>
             </div>
         )
     }
