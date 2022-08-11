@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Catalog from "./Catalog";
+import Cart from "./Cart";
+import item from "./factories/item"
 
 function App() {
+  // item=(name, id, price)
+  const {cart, setCart} = useState([]);
+  const {catalog, setCatalog} = useState([]); //{item id + quantity}
+
+  const addItemtoCart = (item) => {
+
+    setCart(cart.concat(item))
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hello World!
+      <nav></nav>
+      <Catalog catalog={catalog}></Catalog>
+      <Cart cart={cart}></Cart>
     </div>
   );
 }
