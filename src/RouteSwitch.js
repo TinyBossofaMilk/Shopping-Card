@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App"
-import Catalog from "./Catalog";
+import Catalog from "./Shop";
 import Cart from "./Cart";
 
 const RouteSwitch = () => {
@@ -8,7 +8,7 @@ const RouteSwitch = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App/>}/>
-                <Route path="/ShoppingCart" element={<Cart/>}/>
+                <Route path="/Cart" element={<Cart/>}/>
                 <Route path="/Catalog" element={<Catalog/>}/>
             </Routes>
         </BrowserRouter>

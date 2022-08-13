@@ -2,8 +2,8 @@ import { render } from "@testing-library/react";
 import React from "react";
 import item from "./factories/item";
 
-const Catalog = (props) => {
-    const {catalog, addToCart} = props;
+const Shop = (props) => {
+    const {shop, addToCart} = props;
 
     function createDisplay(item)
     {
@@ -18,13 +18,13 @@ const Catalog = (props) => {
     }
 
     return (
-        <div id="catalog">
-            Catalog!
-            {catalog.map(item => 
+        <div id="shop">
+            shop!
+            {shop.map(item => 
                 createDisplay(item)
             )}
         </div>
     )
 }
 
-export default Catalog;
+export default Shop;

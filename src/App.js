@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import Catalog from "./Catalog";
+import Shop from "./Shop"
 import Cart from "./Cart";
+import Nav from "./Nav";
 import item from "./factories/item"
 import uniqid from "uniqid"
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 function App() {
+  const navLinks = ["Shop", "About", "My Cart"];
   const [cart, setCart] = useState([]);//{item id + quantity}
-  const [catalog, setCatalog] = useState([
+  const [shop, setShop] = useState([
     item("pants", uniqid(), 115),
     item("shirt", uniqid(), 115),
     item("shoes", uniqid(), 846)
@@ -16,16 +19,22 @@ function App() {
     setCart(cart.concat({e, qty:1}));
   }; 
 
-  // console.log(catalog)
   console.log(cart)
-  // console.log(item("pants", 1, 115))
   
   return (
     <div className="App">
       Hello World!
-      <nav></nav>
-      <Catalog catalog={catalog} addToCart={addToCart}></Catalog>
-      <Cart cart={cart} ></Cart>
+        <Nav navLinks={navLinks}/>
+      <Router>
+        {/* <Switch>
+        </Switch> */}
+        <Routes>
+          <Route path="/shop" component={Shop} />
+          <Route path="/cart" component={Cart} />
+        </Routes>
+      </Router>
+      {/* <shop shop={Shop} addToCart={addToCart}></shop>
+      <Cart cart={cart} ></Cart> */}
     </div>
   );
 }
