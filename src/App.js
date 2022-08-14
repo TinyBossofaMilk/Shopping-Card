@@ -7,7 +7,7 @@ import uniqid from "uniqid"
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 function App() {
-  const navLinks = ["Shop", "About", "My Cart"];
+  // const navLinks = ["about", "shop", "cart"];
   const [cart, setCart] = useState([]);//{item id + quantity}
   const [shop, setShop] = useState([
     item("pants", uniqid(), 115),
@@ -15,8 +15,24 @@ function App() {
     item("shoes", uniqid(), 846)
   ]);
 
-  const addToCart = (e) => {
-    setCart(cart.concat({e, qty:1}));
+  const addToCart = (item) => {
+    function indexOfItem(newItem){
+      for(let i = 0; i < cart.length; i++){
+        if(cart[i].item == (newItem))
+        return i;
+      }
+      return -1;
+    }
+    
+    let index = indexOfItem(item);
+    if(index === -1)
+      {setCart(cart.concat({item, qty:1}));}
+    else
+      { 
+        let cartcpy = [...cart];
+        cartcpy[index] = {item: cartcpy[index].item, qty: cartcpy[index].qty + 1}
+        setCart(cartcpy);
+      }
   }; 
 
   console.log(cart)
@@ -24,19 +40,17 @@ function App() {
   return (
     <div className="App">
       Hello World!
-        <Nav navLinks={navLinks}/>
       <Router>
-        {/* <Switch>
-        </Switch> */}
+        <Nav/>
         <Routes>
-          <Route path="/shop" component={Shop} />
-          <Route path="/cart" component={Cart} />
+          {/* <Route path="about" element={<Shop shop={shop} addToCart={addToCart} />} /> */}
+          <Route path="shop" element={<Shop shop={shop} addToCart={addToCart} />} />
+          <Route path="cart" element={<Cart cart={cart} />} />
         </Routes>
       </Router>
-      {/* <shop shop={Shop} addToCart={addToCart}></shop>
-      <Cart cart={cart} ></Cart> */}
+          <Cart cart={cart} />
     </div>
   );
 }
 
-export default App;
+export default App; 

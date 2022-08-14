@@ -3,14 +3,14 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 const Nav = (props) => {
-    const {navLinks} = props;
-    console.log(navLinks);
+    // const {navLinks} = props;
+    // console.log(navLinks);
     return (
-        <nav>
+        <nav id="nav">
             Links here!
-            {navLinks.forEach(link => {<Link>
-                {link}
-            </Link>})};
+            {/* <Link to="about">About</Link> */}
+            <Link to="shop" >Shop</Link>
+            <Link to="cart">Cart</Link>
         </nav>
     )
 }

@@ -4,17 +4,23 @@ import React from "react";
 const Cart = (props) => {
     const {cart} = props;
 
-    return (
-        <div>
-            Cart!
+    function createDisplay(e)
+    {
+        {/* // console.log(e) */}
+        return (
+            <div key={e.item.id} id={e.item.id}>
+                <img></img>
+                <div className="name">{e.item.name}</div>
+                <div className="Quantity">{e.qty}</div>
+                <div className="Total">${e.item.price*e.qty}</div>
+            </div>
+        )
+    }
 
-            {cart.map((item) => {
-                <div>
-                    <div>{item.name}</div>
-                    <div>Quantity: {item.qty}</div>
-                    {/* <button onClick={removeItem}>Remove Item{item.qty}</button> */}
-                </div>
-            })}
+    return (
+        <div id="cart">
+            Cart!
+            {cart.map(createDisplay)}
         </div>
     )
 }
